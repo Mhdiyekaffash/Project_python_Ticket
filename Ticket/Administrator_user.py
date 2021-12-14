@@ -35,7 +35,7 @@ class Administrator_user:
         return uniqe_id
 
     @classmethod
-    def add_administrator_user(cls):  # add new account for administrator_user
+    def add_admin(cls):  # add new account for administrator_user
         name = input("please enter your First name :")
         l_name = input("please enter your Last name :")
         phone_number = int(input("please enter your phone_number :"))
@@ -49,16 +49,34 @@ class Administrator_user:
             email_address = input("The address email is incorrect, put '@' in the email. Please enter again :")
         user_name = input("please enter your user_name :")
         password = input("please enter your password :")
+        while not Administrator_user.pass_validity(password):
+            print("""password must contain 1 number (0-9)\npassword must contain 1 uppercase letters
+            password must contain 1 lowercase letters\npassword must contain 1 non-alpha numeric number
+            password is 8-16 characters with no space\n for example ---> #m_4xF%t"Bu5jeb$""")
+
         re_pass = input("please Re-enter your password :")
         while not Administrator_user.check_pass(password, re_pass):
             print("❌ The two passwords entered do not match, please enter again ❌")
             password = input("password :")
+            while not Administrator_user.pass_validity(password):
+                print("""password must contain 1 number (0-9)\npassword must contain 1 uppercase letters
+                password must contain 1 lowercase letters\npassword must contain 1 non-alpha numeric number
+                password is 8-16 characters with no space\n for example ---> #m_4xF%t"Bu5jeb$""")
             re_pass = input("Re_password :")
         id = cls.generate_id(user_name, password)
         cls.list_Administrator_user.append(id)
         print(f"Your registration was completed successfully. Special code for admin is {cls.special_code} "
               f"Please remember .")
         return name, l_name, user_name, password, re_pass, phone_number, national_code, email_address
+
+    @staticmethod
+    def pass_validity(password):
+        pass_pattern = r"(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm)"
+        matches1 = re.search(pass_pattern, password, re.MULTILINE)
+        if matches1:
+            return True
+        else:
+            return False
 
     @staticmethod
     def check_pass(password, re_pass):
@@ -69,28 +87,28 @@ class Administrator_user:
 
     @staticmethod
     def check_email(email_address):
-        regex1 = r"(.+\@.+\.[c][o][m])"
-        matches1 = re.search(regex1, email_address)
-        if matches1:
-            return True
-        else:
-            return False
-
-    @staticmethod
-    def check_national_code(national_code):
-        regex2 = r"(/^[0-9]{10}$/g)"
-        matches2 = re.search(regex2, national_code)
+        email_pattern = r"(.+\@.+\.[c][o][m])"
+        matches2 = re.search(email_pattern, email_address)
         if matches2:
             return True
         else:
             return False
 
     @staticmethod
-    def check_phone_number(phone_number):
-        regex3 = r"(/^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]" \
-                 r"|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$/mg)"
-        matches3 = re.search(regex3, phone_number)
+    def check_national_code(national_code):
+        n_c_pattern = r"(/^[0-9]{10}$/g)"
+        matches3 = re.search(n_c_pattern, national_code)
         if matches3:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def check_phone_number(phone_number):
+        p_n_pattern = r"(/^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]" \
+                 r"|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{8})$/mg)"
+        matches4 = re.search(p_n_pattern, phone_number)
+        if matches4:
             return True
         else:
             return False
@@ -121,3 +139,4 @@ class Administrator_user:
         """
         print("for submit names Administrator_user ")
 
+#  edit regester yadet nare

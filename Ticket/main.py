@@ -9,7 +9,7 @@ if introduction == '1':
     login_admin = input("\n1.Register\n2.login ?")
     if login_admin == '1':
         """
-        ----> Call method add_administrator_user of module Administrator
+        ----> Call method add_admin of module Administrator
         """
     if login_admin == '2':
         for i in range(1, 4):
