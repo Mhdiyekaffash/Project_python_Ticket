@@ -71,7 +71,7 @@ class Event:
         # -------------------------------------------
         location = input("Venue of the event :")
         total_capacity = int(input("Total capacity : "))
-        ticket_fee = int(input("Ticket fee :"))
+        # ticket_fee = int(input("Ticket fee :"))
         #--------Registration start date--------------------------------------------------------------
 
         # print("Enter the start date for registration :")
@@ -124,18 +124,16 @@ class Event:
         # end_time = input("Registration end time : ")
         # while not cls.check_date(end_time):
         #     start_date = input("Please follow the time format , for example ---> 09:10")
-        r_d = int(input("registration deadline ? "))
+        r_d = int(input("registration deadline ? "))  # r_d ---> registration deadline
         start_date = holding_date - timedelta(days=r_d)
         print(f"Start registration {start_date}")
         end_date = holding_date - timedelta(days=1)
         print(f"finish registration {end_date}")
         print("This event was successfully registered ✔ Thanks. ")
-
-
         logger.info('Event registration !', exc_info=True)
         # return name_event, holding_date, holding_time, location, total_capacity, ticket_fee, start_date, \
         #        start_time, end_date, end_time
-        return name_event, holding_date, location, total_capacity, ticket_fee, start_date, end_date
+        return name_event, holding_date, location, total_capacity, start_date, end_date
 
     # @staticmethod
     # def check_date(date_event):
@@ -156,20 +154,22 @@ class Event:
     #         return False
 
     @staticmethod
-    def date_registration(end_date, end_time):
+    def date_registration():
         """
         display Date and time of user registration user
         """
         now = datetime.now()
         now_date = now.date()
-        if now_date.year > end_date.year:
-            print("Registration deadline has expired ")
-        elif now_date.year == end_date.year & now_date.month > end_date.month:
-            print("Registration deadline has expired ")
-        elif now_date.year == end_date.year & now_date.month == end_date.month & now_date.day > end_date.day:
-            print("Registration deadline has expired ")
         now_time = time(now.hour, now.minute, now.second)
-        return now_date, now_time
+        if now_date.year > Event.add_event()[5].year:
+            print("Registration deadline has expired ")
+        elif now_date.year == Event.add_event()[5].year & now_date.month > Event.add_event()[5].month:
+            print("Registration deadline has expired ")
+        elif now_date.year == Event.add_event()[5].year & now_date.month == Event.add_event()[5].month & \
+                now_date.day > Event.add_event()[5].day:
+            print("Registration deadline has expired ")
+        else:
+            return now_date, now_time
 
     @staticmethod
     def check_int(value):
@@ -179,7 +179,7 @@ class Event:
             else:
                 raise Exception
         except Exception as e:
-            logger.error("You must enter a numeric value", exc_info=True)
+            logger.error("The entered phrase is not a int", exc_info=True)
 
 
     def file_happens(self):  # for submit Happens
@@ -194,21 +194,24 @@ class Event:
         return f"The remaining capacity of the {self.name_event} Event is : {self.remaining_capacity} and " \
                f"time remaining until the end of to Event registration : min"
 
-    def type_ticket(self):  # display types tickets and Selected by the customer.
+
+    def type_ticket(self):  # display types tickets payable for the customer.
         print("Choose your ticket type 🙂")
-        menu01 = input("""\n1.Normal\n2.vip\n3.Student\n4.Cultural\n5.special place\n6.Last Moment\n...? """)
+        menu01 = input("""\n1.Normal\n2.vip\n3.Student\n4.Cultural\n5.Last Moment\n What is your choice? """)
         number_ticket = int(input("How many tickets do you want ? "))
         while not Event.check_capacity(self.remaining_capacity, number_ticket):
             a = input("Are you still interested in registering for the event? yes/no")
             if a == 'yes':
                 number_ticket = int(input("Re-enter the number of tickets you requested : "))
-                if not Event.check_capacity(self.remaining_capacity, number_ticket):
-                    print(f"why :| ?????? my Dear {number_ticket} > {self.remaining_capacity}  :|")
-                else:
-                    self.remaining_capacity -= number_ticket
-                    print("✔")
-                    break
+                # if not Event.check_capacity(self.remaining_capacity, number_ticket):
+                #     print(f"why :| ?????? my Dear {number_ticket} > {self.remaining_capacity}  :|")
+                # else:
+                #     self.remaining_capacity -= number_ticket
+                #     print("✔")
+                #     break
             elif a == 'no':
+                self.remaining_capacity -= number_ticket
+                print("✔")
                 break
         if menu01 == '1':
             print("Display discount code and payable")
