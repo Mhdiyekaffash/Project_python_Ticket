@@ -124,6 +124,7 @@ class Administrator_user:
             id = Administrator_user.generate_id(user_name, password)
             if id in Administrator_user.list_Administrator_user:
                 print("welcome ✔")
+                logger.info(f"Login by admin with username {Administrator_user.add_admin()[2]} !", exc_info=True)
                 break
             else:
                 if i == 3:
@@ -139,4 +140,3 @@ class Administrator_user:
         """
         print("for submit names Administrator_user ")
 
-#  edit regester yadet nare
