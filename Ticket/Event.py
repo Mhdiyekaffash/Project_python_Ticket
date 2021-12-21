@@ -1,21 +1,12 @@
-import logging
+import log
 from File_Handler import FileHandler
 from datetime import date, time, datetime, timedelta
 import re
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-# create handlers and set level
-file_handler = logging.FileHandler('Administrator_user')
-file_handler.setLevel(level=logging.INFO)
-# create formatters and add it to handlers
-file_format = logging.Formatter('%(asctime)s ::%(levelname)s - %(filename)s  - %(message)s')
-file_handler.setFormatter(file_format)
-# add handlers to the logger
-logger.addHandler(file_handler)
-
 
 class Event:
+    Recorded_events = {}
+
     def __init__(self, name, start_date, end_date, holding_date, location, total_capacity, remaining_capacity, type):
         """
         :param holding_date: holding_date event
@@ -23,7 +14,7 @@ class Event:
         :param end_date: Registration end date
         :param end_date: Security or public
         """
-        self.name_event = name
+        self.event_name = name
         self.start_date = start_date
         self.holding_date = holding_date
         self.end_date = end_date
@@ -34,40 +25,204 @@ class Event:
 
     @classmethod
     def add_event(cls):
-        name_event = input("Event name : ")
+        event_name = input("Event name : ")
+        event_place = input("Event place : ")
         print("Enter the date and time of the event 📆")
-        year = int(input("Year :"))
-        month = int(input("Month :"))
+        while True:
+            try:
+                year = int(input("Year (i.e ---> 2020 ):"))
+            except Exception as E:
+                print(E)
+            else:
+                break
+        while True:
+            try:
+                month = int(input("Month :"))
+            except Exception as E:
+                print(E)
+            else:
+                break
         while month > 12:
             month = int(input("month must be in 1..12"))
-        day = int(input("d:"))
+        while True:
+            try:
+                day = int(input("d:"))
+            except Exception as E:
+                print(E)
+            else:
+                break
         while day > 31:
             day = int(input("day must be in 1..31"))
-        hour = int(input("Hour :"))
+        while True:
+            try:
+                hour = int(input("Hour :"))
+            except Exception as E:
+                print(E)
+            else:
+                break
         while hour > 24:
             hour = int(input("hour must be in 1..24"))
-        minute = int(input("Minute :"))
+        while True:
+            try:
+                minute = int(input("Minute :"))
+            except Exception as E:
+                print(E)
+            else:
+                break
         while minute > 59:
             minute = int(input("minute must be in 1..59"))
         holding_date = datetime(year, month, day, hour=hour, minute=minute, second=0)
         print(f"holding_date : {holding_date}")
-        total_capacity = int(input("Total capacity : "))
-        r_d = int(input("registration deadline ? "))  # r_d ---> registration deadline
+        while True:
+            try:
+                total_capacity = int(input("Total capacity : "))
+            except Exception as E:
+                print(E)
+            else:
+                break
+        while True:
+            try:
+                r_d = int(input("registration deadline ? "))  # r_d ---> registration deadline
+            except Exception as E:
+                print(E)
+            else:
+                break
         start_date = holding_date - timedelta(days=r_d)
         print(f"Start registration {start_date}")
         end_date = holding_date - timedelta(days=1)
         print(f"finish registration {end_date}")
-        type_event = input("Security or public :")
+        event_type = input("1.Security  2.public :")
+        if event_type == '1':
+            event_type = 'Security'
+        elif event_type == '2':
+            event_type = 'public'
+        else:
+            log.logger.warning('The entered phrase is incorrect', exc_info=True)
+        cls.Recorded_events = {'event_name': event_name, 'event_place': event_place, 'holding_date': holding_date,
+                               'total_capacity': total_capacity, 'start_date': start_date, 'end_date': end_date,
+                               'event_type': event_type}
         print("This event was successfully registered ✔ Thanks. ")
-        logger.info('Event registration !', exc_info=True)
-        return name_event, holding_date, total_capacity, start_date, end_date, type_event
+        log.logger.info(f'The {event_name} event was recorded on the {holding_date} !', exc_info=True)
+        return event_name, event_place, holding_date, total_capacity, start_date, end_date, event_type
 
     @classmethod
-    def location(cls):
-        city = input("City : ")
-        street = input("Street : ")
-        building = input("Building name :")
-        return city, street, building
+    def edit_event_information(cls):
+        Select = ['event_name', 'event_place', 'holding_date', 'total_capacity', 'event_type']
+        while True:
+            try:
+                key1 = int(input("""
+                Which of the following do you want to change? Select !
+                1.Event name  2.Event place  3.Holding date  4.Total capacity  5.Event type  6.Exit
+                """))
+                for i, item in enumerate(Select):
+                    if key1 - 1 == i:
+                        change = cls.Recorded_events
+                        while True:
+                            try:
+                                if item == 'event_name':
+                                    new_name = input("Event name : ")
+                                    change['event_name'] = new_name
+                            except Exception:
+                                log.logger.error(f"Error in input data type !", exc_info=True)
+                            else:
+                                break
+                        while True:
+                            try:
+                                if item == 'event_place':
+                                    new_event_place = input("Event place : ")
+                                    change['event_place'] = new_event_place
+                            except Exception:
+                                log.logger.error(f"Error in input data type !", exc_info=True)
+                            else:
+                                break
+                        while True:
+                            try:
+                                if item == 'holding_date':
+                                    while True:
+                                        try:
+                                            year = int(input("Year (i.e ---> 2020 ):"))
+                                        except Exception as E:
+                                            print(E)
+                                        else:
+                                            break
+                                    while True:
+                                        try:
+                                            month = int(input("Month :"))
+                                        except Exception as E:
+                                            print(E)
+                                        else:
+                                            break
+                                    while month > 12:
+                                        month = int(input("month must be in 1..12"))
+                                    while True:
+                                        try:
+                                            day = int(input("d:"))
+                                        except Exception as E:
+                                            print(E)
+                                        else:
+                                            break
+                                    while day > 31:
+                                        day = int(input("day must be in 1..31"))
+                                    while True:
+                                        try:
+                                            hour = int(input("Hour :"))
+                                        except Exception as E:
+                                            print(E)
+                                        else:
+                                            break
+                                    while hour > 24:
+                                        hour = int(input("hour must be in 1..24"))
+                                    while True:
+                                        try:
+                                            minute = int(input("Minute :"))
+                                        except Exception as E:
+                                            print(E)
+                                        else:
+                                            break
+                                    while minute > 59:
+                                        minute = int(input("minute must be in 1..59"))
+                                    new_holding_date = datetime(year, month, day, hour=hour, minute=minute, second=0)
+                                    while True:
+                                        try:
+                                            new_registration_deadline = int(
+                                                input("registration deadline ? "))  # r_d ---> registration deadline
+                                        except Exception as E:
+                                            print(E)
+                                        else:
+                                            break
+                                    start_date = new_holding_date - timedelta(days=new_registration_deadline)
+                                    end_date = new_holding_date - timedelta(days=1)
+                                    change['holding_date'] = new_holding_date
+                                    change['start_date'] = start_date
+                                    change['end_date'] = end_date
+                            except Exception:
+                                log.logger.error(f"Error in input data type !", exc_info=True)
+                            else:
+                                break
+                        while True:
+                            try:
+                                if item == 'event_type':
+                                    event_type = input("1.Security  2.public :")
+                                    if event_type == '1':
+                                        event_type = 'Security'
+                                    elif event_type == '2':
+                                        event_type = 'public'
+                                    else:
+                                        log.logger.warning('The entered phrase is incorrect', exc_info=True)
+                                    change['event_type'] = event_type
+                            except Exception:
+                                log.logger.error(f"Error in input data type !", exc_info=True)
+                            else:
+                                break
+                if key1 == 5:
+                    break
+                else:
+                    log.logger.warning('The entered phrase is incorrect', exc_info=True)
+            except Exception as E:
+                print(E)
+
+
+
 
     # @staticmethod
     # def check_date(date_event):
@@ -88,25 +243,16 @@ class Event:
     #     else:
     #         return False
 
-    @staticmethod
-    def check_int(value):
-        try:
-            if isinstance(value, int):
-                return True
-            else:
-                raise Exception
-        except Exception as e:
-            logger.error("The entered phrase is not a int", exc_info=True)
 
-    def __repr__(self):
-        """
-        If the user wants to know the remaining capacity of the event and
-         the time remaining until the end of to Event registration
-        :return: string
-        """
-        return f"The {Event.add_event()[0]} event was recorded at the place of {Event.location()} " \
-               f"in time {Event.add_event()[1]} with a capacity of {Event.add_event()[2]} people." \
-               f" Registration for the event starts from {Event.add_event()[3]} to {Event.add_event()[4]}"
+    # def __repr__(self):
+    #     """
+    #     If the user wants to know the remaining capacity of the event and
+    #      the time remaining until the end of to Event registration
+    #     :return: string
+    #     """
+    #     return f"The {Event.add_event()[0]} event was recorded at the place of {Event.location()} " \
+    #            f"in time {Event.add_event()[1]} with a capacity of {Event.add_event()[2]} people." \
+    #            f" Registration for the event starts from {Event.add_event()[3]} to {Event.add_event()[4]}"
 
     @staticmethod
     def check_capacity(num1, num2):
@@ -123,6 +269,7 @@ class Event:
         else:
             print("✔")
             return True
+
 
     def file_events(self):  # for submit Happens
         print("for submit Happens")

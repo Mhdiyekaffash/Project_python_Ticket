@@ -2,17 +2,7 @@ import logging
 import re
 import hashlib
 from File_Handler import FileHandler
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-# create handlers and set level
-file_handler = logging.FileHandler('Administrator_user')
-file_handler.setLevel(level=logging.INFO)
-# create formatters and add it to handlers
-file_format = logging.Formatter('%(asctime)s ::%(levelname)s - %(filename)s - %(message)s')
-file_handler.setFormatter(file_format)
-# add handlers to the logger
-logger.addHandler(file_handler)
+import log
 
 
 class Administrator_user:
@@ -113,7 +103,7 @@ for example ---> #m_4xF%t"Bu5jeb$""")
                                     new_name = input("please enter your First name :")
                                     change['First Name'] = new_name
                             except Exception:
-                                logger.error(f"Error in input data type !", exc_info=True)
+                                log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
                         while True:
@@ -122,7 +112,7 @@ for example ---> #m_4xF%t"Bu5jeb$""")
                                     new_l_name = input("please enter your Last name :")
                                     change['Last Name'] = new_l_name
                             except Exception:
-                                logger.error(f"Error in input data type !", exc_info=True)
+                                log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
                         while True:
@@ -137,7 +127,7 @@ for example ---> #m_4xF%t"Bu5jeb$""")
                                     change['User_name'] = user_name_hash_01
                                     change['id'] = new_id
                             except Exception:
-                                logger.error(f"Error in input data type !", exc_info=True)
+                                log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
                         while True:
@@ -175,7 +165,7 @@ for example ---> #m_4xF%t"Bu5jeb$""")
                                     change['Password'] = new_password_hash_01
                                     change['id'] = new_id
                             except Exception:
-                                logger.error(f"Error in input data type !", exc_info=True)
+                                log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
                         while True:
@@ -186,7 +176,7 @@ for example ---> #m_4xF%t"Bu5jeb$""")
                                         new_phone_number = input("The phone_number is incorrect. please enter again :")
                                     change['Phone_number'] = new_phone_number
                             except Exception:
-                                logger.error(f"Error in input data type !", exc_info=True)
+                                log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
                         while True:
@@ -198,7 +188,7 @@ for example ---> #m_4xF%t"Bu5jeb$""")
                                                                   "please enter again :")
                                     change['National_code'] = new_national_code
                             except Exception:
-                                logger.error(f"Error in input data type !", exc_info=True)
+                                log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
                         while True:
@@ -210,11 +200,13 @@ for example ---> #m_4xF%t"Bu5jeb$""")
                                             "The address email is incorrect, put '@' in the email. Please enter again :")
                                     change['Email_address'] = new_email_address
                             except Exception:
-                                logger.error(f"Error in input data type !", exc_info=True)
+                                log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
                 if key == 8:
                     break
+                else:
+                    log.logger.warning('The entered phrase is incorrect', exc_info=True)
             except Exception as E:
                 print(E)
 
@@ -261,30 +253,3 @@ for example ---> #m_4xF%t"Bu5jeb$""")
             return True
         else:
             return False
-
-    @classmethod
-    def log_in(cls):
-        """
-        This method takes the username and password and checks if it is correct or not
-        """
-        for i in range(1, 4):
-            user_name = input("please enter your user_name :")
-            password = input("please enter your password :")
-            id = Administrator_user.generate_id(user_name, password)
-            if id in Administrator_user.list_Administrator_user:
-                print("welcome ✔")
-                logger.info(f"Login by admin with username {Administrator_user.add_admin()[2]} !", exc_info=True)
-                break
-            else:
-                if i == 3:
-                    print("Your account has been locked 🔒")
-                    logger.warning(f"Account locking !", exc_info=True)
-                else:
-                    print(f"The user_name or password is incorrect ❌ You have {3 - i} more chances")
-
-    def file_admin(self):
-        """
-        for submit and edit file
-        :return:
-        """
-        print("for submit names Administrator_user ")
