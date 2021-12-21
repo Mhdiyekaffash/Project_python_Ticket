@@ -14,12 +14,12 @@ class FileHandler:
                 reader = csv.DictReader(myfile)
                 return list(reader)
         else:
-            return "path is incorrect"
+            return False
 
     def write_file(self, info, mode="a"):
         if isinstance(info, dict):
-            if self.check_unique_id(info["id"]):
-                return "id already exists"
+            # if self.check_unique_id(info["id"]):
+            #     return "id already exists"
             fields = info.keys()
             info = [info]
         elif isinstance(info, list):
@@ -56,13 +56,13 @@ class FileHandler:
         self.write_file(final_rows, mode="w")
 
 
-info_1 = {"id": 1, "name": "fateme", "last_name": "soleimani"}
-info_2 = {"id": 2, "name": "zahra", "last_name": "amiri"}
-my_file = FileHandler(path_file)
+# info_1 = {"id": 1, "name": "fateme", "last_name": "soleimani"}
+# info_2 = {"id": 2, "name": "zahra", "last_name": "amiri"}
+# my_file = FileHandler(path_file)
+# # print(my_file.read_file())
+# print(my_file.write_file(info_1))
+# my_file.write_file(info_2)
+# my_file.edit_row({"id": 1, "name": "fateme", "last_name": "fahimi"})
 # print(my_file.read_file())
-print(my_file.write_file(info_1))
-my_file.write_file(info_2)
-my_file.edit_row({"id": 1, "name": "fateme", "last_name": "fahimi"})
-print(my_file.read_file())
-my_file.delete_row(1)
-print(my_file.read_file())
+# my_file.delete_row(1)
+# print(my_file.read_file())
