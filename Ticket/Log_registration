@@ -1,0 +1,204 @@
+2021-12-21 22:58:53,120 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 19:46:34,232 ::INFO - main.py - Registration of admin account information whit National_code  3611313912 !
+NoneType: None
+2021-12-23 19:46:40,651 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 19:46:40,651 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 19:49:45,364 ::INFO - main.py - Login by admin with id 2bd0a5dcc2f63d72589d25ed229aa2181cbe955ab7664a69d6776537c3e90914_0c150fddc452e12a17d32db391341fbacdb653be21d3f840f92c8d75450a036c !
+NoneType: None
+2021-12-23 19:49:45,365 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 20:01:03,460 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 20:01:18,819 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 20:01:18,820 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 20:03:30,933 ::INFO - main.py - Registration of admin account information whit National_code  0123456789 !
+NoneType: None
+2021-12-23 20:03:50,204 ::WARNING - Administrator_user.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 20:03:59,121 ::INFO - main.py - Edit of admin account information whit National_code 0123456789 !
+NoneType: None
+2021-12-23 20:04:03,217 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-23 20:04:03,218 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:31:29,558 ::INFO - main.py - Registration of admin account information whit National_code  3611313912 !
+NoneType: None
+2021-12-25 01:34:29,786 ::INFO - Event.py - The konkoor event was recorded on the 2222-05-30 12:30:00 !
+NoneType: None
+2021-12-25 01:41:24,446 ::INFO - main.py - Registration konkoor event ! !
+NoneType: None
+2021-12-25 01:41:24,446 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:41:24,447 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:50:44,197 ::INFO - main.py - Registration of admin account information whit National_code  3611313912 !
+NoneType: None
+2021-12-25 01:51:16,578 ::WARNING - Administrator_user.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:51:21,440 ::ERROR - main.py - Error in input data type !
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\PycharmProjects\prozhe_python_01\Ticket\main.py", line 33, in <module>
+    my_file.edit_row(Administrator_user.Register_admin_information)
+  File "C:\Users\Lenovo\PycharmProjects\prozhe_python_01\Ticket\File_Handler.py", line 40, in edit_row
+    self.write_file(final_rows, mode="w")
+  File "C:\Users\Lenovo\PycharmProjects\prozhe_python_01\Ticket\File_Handler.py", line 31, in write_file
+    writer.writerows(info)
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\csv.py", line 157, in writerows
+    return self.writer.writerows(map(self._dict_to_list, rowdicts))
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\lib\csv.py", line 149, in _dict_to_list
+    raise ValueError("dict contains fields not in fieldnames: "
+ValueError: dict contains fields not in fieldnames: None
+2021-12-25 01:53:09,138 ::INFO - Event.py - The Anar event was recorded on the 2022-12-30 20:30:00 !
+NoneType: None
+2021-12-25 01:53:24,528 ::WARNING - Event.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:53:34,632 ::WARNING - Event.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:54:02,207 ::WARNING - Event.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:54:19,634 ::WARNING - Event.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:55:11,069 ::INFO - main.py - Registration krismas event !
+NoneType: None
+2021-12-25 01:55:11,070 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 01:55:11,071 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 02:02:39,513 ::INFO - main.py - Registration of admin account information whit National_code  0123456789 !
+NoneType: None
+2021-12-25 02:08:45,605 ::INFO - main.py - Registration of admin account information whit National_code  3611313912 !
+NoneType: None
+2021-12-25 02:09:40,182 ::INFO - Event.py - The Krismas event was recorded on the 2022-12-30 03:30:00 !
+NoneType: None
+2021-12-25 02:10:03,662 ::INFO - main.py - Registration Krismas event !
+NoneType: None
+2021-12-25 02:10:03,664 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 02:10:03,664 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 03:09:38,991 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-25 03:12:07,881 ::INFO - Event.py - The 1 event was recorded on the 2021-12-12 12:12:00 !
+NoneType: None
+2021-12-25 11:25:22,838 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-25 11:26:32,753 ::INFO - Event.py - The Anar event was recorded on the 2022-05-10 12:00:00 !
+NoneType: None
+2021-12-25 11:44:53,932 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-25 11:46:17,744 ::INFO - Event.py - The Yalda event was recorded on the 2022-12-30 00:00:00 !
+NoneType: None
+2021-12-25 11:47:42,517 ::INFO - main.py - Registration Yalda event !
+NoneType: None
+2021-12-25 11:47:42,517 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 12:40:11,400 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-25 12:41:05,274 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-25 12:41:07,146 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 21:07:34,800 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-25 23:29:23,492 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-25 23:30:52,765 ::INFO - Event.py - The optic event was recorded on the 2022-01-01 14:00:00 !
+NoneType: None
+2021-12-26 10:09:50,325 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 10:10:58,771 ::INFO - Event.py - The python event was recorded on the 2021-12-30 00:00:00 !
+NoneType: None
+2021-12-26 10:12:15,240 ::INFO - main.py - Registration python event !
+NoneType: None
+2021-12-26 10:12:15,241 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 13:09:53,523 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 13:11:31,478 ::INFO - Event.py - The badbadakha event was recorded on the 2022-01-15 09:30:00 !
+NoneType: None
+2021-12-26 13:13:40,629 ::INFO - main.py - Registration badbadakha event !
+NoneType: None
+2021-12-26 13:13:40,629 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 13:17:22,684 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 13:18:55,383 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 13:18:57,767 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 16:57:10,763 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 16:57:16,161 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 18:26:00,762 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 18:28:43,397 ::INFO - Event.py - The christmas event was recorded on the 2021-12-30 00:00:00 !
+NoneType: None
+2021-12-26 18:31:08,131 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 18:32:03,196 ::INFO - Event.py - The christmas event was recorded on the 2022-01-01 00:00:00 !
+NoneType: None
+2021-12-26 18:34:22,998 ::INFO - main.py - Registration christmas event !
+NoneType: None
+2021-12-26 18:34:22,999 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 19:07:45,473 ::INFO - main.py - 20 tickets were purchased for the christmas event
+NoneType: None
+2021-12-26 19:20:23,903 ::INFO - main.py - christmas event tickets are purchased by a person with a national code 3611313912!
+NoneType: None
+2021-12-26 21:38:04,855 ::INFO - main.py - Registration of admin account information whit National_code  3611313912 !
+NoneType: None
+2021-12-26 21:38:46,014 ::WARNING - Administrator_user.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:38:50,535 ::ERROR - main.py - Error in input data type !
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\PycharmProjects\prozhe_python_01\Ticket\main.py", line 35, in <module>
+    my_file.edit_row(Administrator_user.Register_admin_information)
+  File "C:\Users\Lenovo\PycharmProjects\prozhe_python_01\Ticket\File_Handler.py", line 37, in edit_row
+    if row["event_name"] == new_info["event_name"]:
+KeyError: 'event_name'
+2021-12-26 21:41:06,835 ::INFO - Event.py - The Omicron event was recorded on the 2022-01-10 09:30:00 !
+NoneType: None
+2021-12-26 21:41:50,446 ::WARNING - Event.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:42:01,700 ::WARNING - Event.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:42:07,678 ::WARNING - Event.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:46:56,940 ::INFO - main.py - Registration Omicron event !
+NoneType: None
+2021-12-26 21:46:56,940 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:46:56,942 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:52:08,513 ::INFO - main.py - Login by admin with id 599861f1a166217685bc084fdb3a577bc1adc9367403267a1366bd5237b80f0f_dc33757eff97aee1af0f5f6bd6a20ea0cc1309c214b24eb3ea891a8cd209995f !
+NoneType: None
+2021-12-26 21:52:36,888 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:56:12,713 ::INFO - main.py - Registration of admin account information whit National_code  3611313912 !
+NoneType: None
+2021-12-26 21:56:45,358 ::WARNING - Administrator_user.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:56:48,329 ::INFO - main.py - Edit of admin account information whit National_code 3611313912 !
+NoneType: None
+2021-12-26 21:59:02,525 ::INFO - Event.py - The x_ray event was recorded on the 2025-10-15 15:00:00 !
+NoneType: None
+2021-12-26 21:59:30,288 ::INFO - main.py - Registration x_ray event !
+NoneType: None
+2021-12-26 21:59:30,288 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 21:59:30,288 ::WARNING - main.py - The entered phrase is incorrect
+NoneType: None
+2021-12-26 22:16:48,867 ::INFO - main.py - 1 tickets were purchased for the badbadakha event
+NoneType: None
+2021-12-26 22:27:55,900 ::INFO - main.py - 5 tickets were purchased for the badbadakha event
+NoneType: None
+2021-12-26 22:28:58,187 ::INFO - main.py - 5 tickets were purchased for the badbadakha event
+NoneType: None
+2021-12-26 22:29:24,700 ::INFO - main.py - 3 tickets were purchased for the badbadakha event
+NoneType: None

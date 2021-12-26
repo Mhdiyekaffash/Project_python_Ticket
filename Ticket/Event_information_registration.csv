@@ -1,0 +1,6 @@
+event_name,event_place,holding_date,total_capacity,start_date,end_date,event_type,remaining_capacity,Original_ticket_price,Vip_ticket_price,Student_ticket_price,Student_ticket_discount_code03,Cultural_ticket_price,Cultural_ticket_discount_code03,Last Moment_ticket_price,Last Moment_ticket_discount_code03,List_of_dates_for_special_days,List_of_discount_dates_for_special_days
+Krismas,paris,2022-12-30 03:30:00,120,2021-11-30 03:30:00,2021-12-29 03:30:00,Public,107,108.0,,,,,,,,,
+badbadakha,Bris,2022-01-15 09:30:00,50,2021-10-17 09:30:00,2022-01-14 09:30:00,Public,5,5.0,,,,3.0,Cultural,,,"[datetime.datetime(2021, 12, 26, 0, 0), datetime.datetime(2022, 1, 1, 0, 0)]","[100, 80]"
+christmas,paris,2022-01-01 00:00:00,10000,2021-09-23 00:00:00,2021-12-31 00:00:00,Security,9861,108.0,800.8,108.0,Student*,96.0,Cultural**,12.0,Last_Moment****,"[datetime.datetime(2021, 12, 26, 0, 0)]",[50]
+Omicron,Milad Tower,2022-01-10 10:30:00,50,2021-11-11 10:30:00,2022-01-09 10:30:00,Security,50,180.5,250.0,,,,,144.4,Last Moment,"[datetime.datetime(2021, 12, 10, 0, 0)]",[50]
+x_ray,Shabahang,2025-10-15 15:00:00,2,2025-10-05 15:00:00,2025-10-14 15:00:00,Security,2,0.0,,,,,,,,[],[]
