@@ -1,7 +1,5 @@
 import log
-from File_Handler import FileHandler
-from datetime import date, time, datetime, timedelta
-import re
+from datetime import datetime, timedelta
 
 
 class Event:
@@ -25,6 +23,7 @@ class Event:
 
     @classmethod
     def add_event(cls):
+        global holding_date
         event_name = input("Event name : ")
         event_place = input("Event place : ")
         print("Enter the date and time of the event 📆")
@@ -46,7 +45,7 @@ class Event:
             month = int(input("month must be in 1..12"))
         while True:
             try:
-                day = int(input("d:"))
+                day = int(input("day :"))
             except Exception as E:
                 print(E)
             else:
@@ -71,15 +70,11 @@ class Event:
                 break
         while minute > 59:
             minute = int(input("minute must be in 1..59"))
-        holding_date = datetime(year, month, day, hour=hour, minute=minute, second=0)
+        try:
+            holding_date = datetime(year, month, day, hour=hour, minute=minute, second=0)
+        except Exception as E:
+            print(E)
         print(f"holding_date : {holding_date}")
-        while True:
-            try:
-                total_capacity = int(input("Total capacity : "))
-            except Exception as E:
-                print(E)
-            else:
-                break
         while True:
             try:
                 r_d = int(input("registration deadline ? "))  # r_d ---> registration deadline
@@ -91,6 +86,20 @@ class Event:
         print(f"Start registration {start_date}")
         end_date = holding_date - timedelta(days=1)
         print(f"finish registration {end_date}")
+        while True:
+            try:
+                total_capacity = int(input("Total capacity : "))
+            except Exception as E:
+                print(E)
+            else:
+                break
+        while True:
+            try:
+                remaining_capacity = total_capacity
+            except Exception as E:
+                print(E)
+            else:
+                break
         event_type = input("1.Security  2.public :")
         if event_type == '1':
             event_type = 'Security'
@@ -100,7 +109,7 @@ class Event:
             log.logger.warning('The entered phrase is incorrect', exc_info=True)
         cls.Recorded_events = {'event_name': event_name, 'event_place': event_place, 'holding_date': holding_date,
                                'total_capacity': total_capacity, 'start_date': start_date, 'end_date': end_date,
-                               'event_type': event_type}
+                               'event_type': event_type, 'remaining_capacity': remaining_capacity}
         print("This event was successfully registered ✔ Thanks. ")
         log.logger.info(f'The {event_name} event was recorded on the {holding_date} !', exc_info=True)
         return event_name, event_place, holding_date, total_capacity, start_date, end_date, event_type
@@ -190,11 +199,20 @@ class Event:
                                             print(E)
                                         else:
                                             break
-                                    start_date = new_holding_date - timedelta(days=new_registration_deadline)
-                                    end_date = new_holding_date - timedelta(days=1)
+                                    new_start_date = new_holding_date - timedelta(days=new_registration_deadline)
+                                    new_end_date = new_holding_date - timedelta(days=1)
                                     change['holding_date'] = new_holding_date
-                                    change['start_date'] = start_date
-                                    change['end_date'] = end_date
+                                    change['start_date'] = new_start_date
+                                    change['end_date'] = new_end_date
+                            except Exception:
+                                log.logger.error(f"Error in input data type !", exc_info=True)
+                            else:
+                                break
+                        while True:
+                            try:
+                                if item == 'total_capacity':
+                                    new_total_capacity = input("Event total capacity : ")
+                                    change['total_capacity'] = new_total_capacity
                             except Exception:
                                 log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
@@ -214,45 +232,12 @@ class Event:
                                 log.logger.error(f"Error in input data type !", exc_info=True)
                             else:
                                 break
-                if key1 == 5:
+                if key1 == 6:
                     break
                 else:
                     log.logger.warning('The entered phrase is incorrect', exc_info=True)
             except Exception as E:
                 print(E)
-
-
-
-
-    # @staticmethod
-    # def check_date(date_event):
-    #     date_pattern = r"(?<=\D|^)(?<year>\d{4})(?<sep>[^\w\s])(?<month>1[0-2]|0[1-9])\k<sep>(?<day>0[1-9]|
-    #     [12][0-9]|(?<=11\k<sep>|[^1][4-9]\k<sep>)30|(?<=1[02]\k<sep>|[^1][13578]\k<sep>)3[01])(?=\D|$)"
-    #     matches1 = re.finditer(date_pattern, date_event, re.IGNORECASE | re.UNICODE)
-    #     if matches1:
-    #         return True
-    #     else:
-    #         return False
-
-    # @staticmethod
-    # def check_time(time_event):
-    #     time_pattern = r"/([0-1]{0,1}[0-9]{1}):([0-6]{0,1}[0-9]{1})$/"
-    #     matches2 = re.finditer(time_pattern, time_event)
-    #     if matches2:
-    #         return True
-    #     else:
-    #         return False
-
-
-    # def __repr__(self):
-    #     """
-    #     If the user wants to know the remaining capacity of the event and
-    #      the time remaining until the end of to Event registration
-    #     :return: string
-    #     """
-    #     return f"The {Event.add_event()[0]} event was recorded at the place of {Event.location()} " \
-    #            f"in time {Event.add_event()[1]} with a capacity of {Event.add_event()[2]} people." \
-    #            f" Registration for the event starts from {Event.add_event()[3]} to {Event.add_event()[4]}"
 
     @staticmethod
     def check_capacity(num1, num2):
@@ -269,7 +254,3 @@ class Event:
         else:
             print("✔")
             return True
-
-
-    def file_events(self):  # for submit Happens
-        print("for submit Happens")

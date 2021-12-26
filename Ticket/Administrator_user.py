@@ -1,4 +1,3 @@
-import logging
 import re
 import hashlib
 from File_Handler import FileHandler

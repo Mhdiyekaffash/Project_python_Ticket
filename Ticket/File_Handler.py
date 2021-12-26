@@ -34,7 +34,16 @@ class FileHandler:
         all_rows = self.read_file()
         final_rows = []
         for row in all_rows:
-            if row["id"] == str(new_info["id"]):
+            if row["id"] == new_info["id"]:
+                row = new_info
+            final_rows.append(row)
+        self.write_file(final_rows, mode="w")
+
+    def edit_row2(self, new_info):
+        all_rows = self.read_file()
+        final_rows = []
+        for row in all_rows:
+            if row["event_name"] == new_info["event_name"]:
                 row = new_info
             final_rows.append(row)
         self.write_file(final_rows, mode="w")
@@ -50,13 +59,13 @@ class FileHandler:
         all_rows = self.read_file()
         final_rows = []
         for row in all_rows:
-            if row["id"] == str(id):
+            if row['national_code'] == str(id):
                 continue
             final_rows.append(row)
         self.write_file(final_rows, mode="w")
 
 
-# info_1 = {"id": 1, "name": "fateme", "last_name": "soleimani"}
+# info_1 = {"id": 1, "name": "Mhdiye", "last_name": "Kaffash"}
 # info_2 = {"id": 2, "name": "zahra", "last_name": "amiri"}
 # my_file = FileHandler(path_file)
 # # print(my_file.read_file())
