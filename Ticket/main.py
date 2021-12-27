@@ -15,9 +15,7 @@ introduction = input("Login as --->  1.Admin user  2.client ! ")
 if introduction == '1':
     admin_login = input("\n1.Register\n2.login \nWhich ?  ")
     if admin_login == '1':
-        """
-        ----> Call method add_admin of module Administrator
-        """
+
         Administrator_user.add_admin()
         path_file_info_admin = 'Registration_admin_account_information.csv'
         my_file = FileHandler(path_file_info_admin)
@@ -95,7 +93,7 @@ if introduction == '1':
                         user_name_hash_01 = hashlib.sha256(user_name_hash).hexdigest()
                         id = Administrator_user.generate_id(user_name_hash_01, Password_hash_01)
                         if id in List_of_all_ideas:
-                            print("welcome ✔")
+                            print(" ✔")
                             log.logger.info(f"Login by admin with id {id} !", exc_info=True)
 
                             # *-*  Event definition section
@@ -190,9 +188,12 @@ if introduction == '2':
                                 path_file_Security_Event = 'National_Code_of_Security_Event_Participants.csv'
                                 my_file02 = FileHandler(path_file_Security_Event)
                                 list_national_code = []
-                                for b in my_file02.read_file():
-                                    if b['event_name'] == cc[0][1]:
-                                        list_national_code.append(b['national_code'])
+                                try:
+                                    for b in my_file02.read_file():
+                                        if b['event_name'] == cc[0][1]:
+                                            list_national_code.append(b['national_code'])
+                                except Exception as E:
+                                    print(E)
                                 if list_n_c_p[-1] in list_national_code:
                                     print("A user has already registered with this national code")
                                 else:
@@ -206,7 +207,7 @@ if introduction == '2':
                                         x['remaining_capacity'] = int(x['remaining_capacity']) - 1
                                         path_file_info_Event = 'Event_information_registration.csv'
                                         my_file01 = FileHandler(path_file_info_Event)
-                                        my_file01.edit_row(x)
+                                        my_file01.edit_row2(x)
                                         type_ticket(x)
                                         log.logger.info(f"{x['event_name']} event tickets are purchased by a person "
                                                         f"with "
